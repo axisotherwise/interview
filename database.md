@@ -8,31 +8,31 @@
 <br>
 
 ### 2. 데이터베이스 특징
-1. 실시간 접근성
+1. 실시간 접근성 <br>
 비정형적인 질의(조회)에 대하여 실시간 처리에 의한 응답이 가능해야 함. <br>
 
-2. 지속적인 변화
+2. 지속적인 변화 <br>
 데이터베이스의 상태는 동적이며 새로운 데이터의 삽입 삭제 갱신으로 항상 최신 데이터를 유지해야 함. <br>
 
-3. 동시 공용
+3. 동시 공용 <br>
 데이터베이스는 서로 다른 목적을 가진 여러 응용자들이 사용함. <br>
 그러므로 다수의 사용자가 동시에 같은 내용의 데이터를 이용할 수 있어야 함. <br>
 
-4. 내용에 의한 참조
-데이터베이스에 있는 데이터 참조 시 레코드의 주소나 위치에 의해서가 아니라 사용자가 요구하는 데이터의 내용으로 찾아져야 함. <br>
+4. 내용에 의한 참조 <br>
+데이터베이스에 있는 데이터 참조 시 레코드의 주소나 위치에 의해서가 아니라 사용자가 정의하는 데이터의 내용으로 찾아져야 함. <br>
 
 <br>
 
 ### 3. SQL
-1. DDL(Data Definition Language)
+1. DDL(Data Definition Language) <br>
 데이터베이스의 구조를 정의함. <br>
 (Create, Drop, Alter, Truncate) <br>
 
-2. DCL(Data Manipulation Language)
+2. DML(Data Manipulation Language) <br>
 데이터의 조작을 위해 사용함. <br>
 (Select, Insert, Update, Update) <br>
 
-3. DML(Data Controller Language)
+3. DCL(Data Controller Language) <br>
 데이터 관리와 무결성 유지를 위해 사용함. <br>
 (Grant, Revoke)
 
@@ -41,13 +41,13 @@
 ### 4. 이상 현상
 올바르지 않은 테이블 설계로 인해 발생하는 논리적 오류를 의미함. <br>
 
-1. 삽입 이상
+1. 삽입 이상 <br>
 자료 삽입 시 특정 속성에 해당하는 값이 없어 NULL을 입력해야 하는 현상. <br>
 
-2. 갱신 이상
+2. 갱신 이상 <br>
 중복된 데이터 중 일부만 수정되어 데이터 모순이 일어나는 현상. <br>
 
-3. 삭제 이상
+3. 삭제 이상 <br>
 어떤 데이터를 삭제하면 의도하지 않은 데이터까지 삭제되버리는 현상. <br>
 
 <br>
@@ -157,6 +157,11 @@ A와 B에 수행되는 건 A와 B의 합집합을 의미함. <br>
 사용 <br>
 데이터 필터링과 정렬에 사용되므로 읽기 작업의 빈도가 높을 경우 사용함. <br>
 
+고려 사항 <br>
+- 데이터가 적을수록 효율이 떨어짐. <br>
+- 데이터의 유일성이 높고 범위가 높을수록 효율이 올라감. <br>
+- NULL이 적은 컬럼의 효율적임. <br>
+
 <br>
 
 ### 13. RDBMS NoSQL
@@ -193,7 +198,45 @@ Key-Value 형태로 저장되므로 응답 속도가 빠름. <br>
 데이터는 지워지지만 테이블의 용량은 줄어들지않음. <br>
 원하느 데이터만 삭제할 수 있으며 Rollback이 가능함. <br>
 
+<br>
 
+### 15. GROUP BY
+GROUP BY 명령어를 통해 특정 컬럼을 기준으로 연산한 결과를 집계 키로 정의하여 그룹핑해주는 역할임. <br>
+(COUNT, SUM, AVG, MAX, MIN)
+
+<br>
+
+### 16. WHERE HAVING
+1. HAVING <br>
+그룹화 또는 집계가 발생한 후 필터링하는데 사용됨.
+
+2. WHERE <br>
+그룹화 또는 집계가 발생하기 전 필터링하는데 사용됨.<br>
+
+집계 함수(COUNT, SUM, AVG, MAX, MIN)는 HAVING 절과 사용할 수 있으니 WHERE는 불가능함. <br>
+집계 함수를 사용할 수 있는 GROUP BY 절보다 WHERE 절이 먼저 실행됨.
+
+<br>
+
+### 17. JOIN ON과 WHERE 차이
+ON이 WHERE보다 먼저 실행되어 JOIN을 하기 전 필터링 하고 WHERE 절은 JOIN을 한 후에 필터링을 함. <br>
+
+<br>
+
+### 18. 데이터베이스 무결성
+1. 개체 무결성 (Entity Integrity) <br>
+기본 키는 NULL 값이 올 수 없으며 중복될 수 없음. <br>
+
+2. 참조 무결성 (Referential Integrity) <br>
+외래 키는 NULL 값이 올 수 있으며 부모 테이블의 기본 키에 종속되어야 함. <br>
+
+3. 도메인 무결성 (Domain Integrity) <br>
+삽입될 수 있는 데이터의 제약 조건을 의미함. <br>
+
+<br>
+
+### 19. 쿼리 순서
+SELECT ㅡ> FROM ㅡ> WHERE ㅡ> GROUP BY ㅡ> ORDER B
 
 
 
